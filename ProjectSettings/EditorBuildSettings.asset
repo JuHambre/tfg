@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/title.unity
   - enabled: 1
     path: Assets/selectlevel.unity
+  - enabled: 1
+    path: Assets/cout.unity
