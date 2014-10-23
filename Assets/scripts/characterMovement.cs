@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class characterMovement : MonoBehaviour {
 	public Animator characterAnimator;
@@ -7,6 +8,7 @@ public class characterMovement : MonoBehaviour {
 	public bool textEnabled = false;
 	public string texto = "";
 	public string animal = "";
+	public GameObject turtleTerminal;
 
 	// Use this for initialization
 	void Start () {
@@ -30,24 +32,40 @@ public class characterMovement : MonoBehaviour {
 	}
 
 	void OnGUI()
-	{
+	{		
 		if(textEnabled)
 		{
-			texto = GUI.TextField(new Rect(Screen.width * 0.05f, Screen.height * 0.5f, 400, 250),texto);
-			if (GUI.Button (new Rect ((Screen.width * 0.05f), (Screen.height * 0.9f), 400, 50), "Comprobar")) {
+			// Capturar las tabulaciones porque no las pilla el textarea
+			if( Event.current.Equals( Event.KeyboardEvent("tab") ) )
+			{
+				texto += "\t";
+				TextEditor editor = (TextEditor)GUIUtility.GetStateObject(typeof(TextEditor), GUIUtility.keyboardControl);
+				editor.selectPos = texto.Length + 1;
+				editor.pos = texto.Length + 1;
+				Event.current.Use();
+			}
+
+			texto = GUI.TextArea(new Rect(Screen.width * 0.05f, Screen.height * 0.5f, 400, 250),texto);
+			if(animal.Equals("tortuga"))
+			{
+				turtleTerminal.SetActive(true);
+			}
+			if (GUI.Button (new Rect ((Screen.width * 0.05f), (Screen.height * 0.9f), 400, 50), "Comprobar"))
+			{
+				// Hacemos split de espacios tabulaciones y saltos de linea ya que en la programacion no influyen
+				string [] split = texto.Split(new Char [] {' ', '\n', '\t'});
+				string codigo = string.Join("", split);
+
+				// Dependiendo de contra que colisionemos haremos unas acciones u otras
 				if(animal.Equals("tortuga"))
 				{
-					if(texto.Equals("prueba"))
+					if(codigo.Equals("cout<<\"Hola\";"))
 					{
-
+						textEnabled = false;
+						Application.LoadLevel("selectlevel");
 					}
 				}
 			}
-			// IF GUI.Button... blabla
-			// textEnabled = false;
-			// comprobar que el texto coincida
-
 		}
-
 	}
 }

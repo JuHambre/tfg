@@ -15,6 +15,5 @@ public class collideTurtle : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision) {
 		collision.gameObject.SendMessage ("activarTexto", "tortuga");
-		//gameObject.SetActive (false);
 	}
 }
