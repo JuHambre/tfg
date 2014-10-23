@@ -11,3 +11,5 @@ EditorBuildSettings:
     path: Assets/selectlevel.unity
   - enabled: 1
     path: Assets/cout.unity
+  - enabled: 1
+    path: Assets/finishlevel.unity
