@@ -13,3 +13,7 @@ EditorBuildSettings:
     path: Assets/cout.unity
   - enabled: 1
     path: Assets/finishlevel.unity
+  - enabled: 1
+    path: Assets/contador.unity
+  - enabled: 1
+    path: Assets/if.unity

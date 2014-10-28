@@ -9,6 +9,10 @@ public class characterMovement : MonoBehaviour {
 	public string texto = "";
 	public string animal = "";
 	public GameObject turtleTerminal;
+	public GameObject dinamiteTerminal;
+	public GameObject sharkTerminal;
+	public GameObject warriorTerminal;
+	public GameObject mountainTerminal;
 
 	// Use this for initialization
 	void Start () {
@@ -45,10 +49,26 @@ public class characterMovement : MonoBehaviour {
 				Event.current.Use();
 			}
 
-			texto = GUI.TextArea(new Rect(Screen.width * 0.05f, Screen.height * 0.5f, 400, 250),texto);
+			texto = GUI.TextArea(new Rect(Screen.width * 0.05f, Screen.height * 0.55f, 400, 200),texto);
 			if(animal.Equals("tortuga"))
 			{
 				turtleTerminal.SetActive(true);
+			}
+			if(animal.Equals("dinamita"))
+			{
+				dinamiteTerminal.SetActive(true);
+			}
+			if(animal.Equals("tiburon"))
+			{
+				sharkTerminal.SetActive(true);
+			}
+			if(animal.Equals("guerrero"))
+			{
+				warriorTerminal.SetActive(true);
+			}
+			if(animal.Equals("montanya"))
+			{
+				mountainTerminal.SetActive(true);
 			}
 			if (GUI.Button (new Rect ((Screen.width * 0.05f), (Screen.height * 0.9f), 400, 50), "Comprobar"))
 			{
@@ -63,6 +83,40 @@ public class characterMovement : MonoBehaviour {
 					{
 						textEnabled = false;
 						Application.LoadLevel("selectlevel");
+					}
+				}
+				if(animal.Equals("tiburon"))
+				{
+					if(codigo.Equals("tiburon--;"))
+					{
+						textEnabled = false;
+						Application.LoadLevel("selectlevel");
+					}
+				}
+				if(animal.Equals("guerrero"))
+				{
+					if(codigo.Equals("if(verOrco){cout<<\"¡FUEGO!\";}") || codigo.Equals("if(verOrco==1){cout<<\"¡FUEGO!\";}"))
+					{
+						textEnabled = false;
+						Application.LoadLevel("selectlevel");
+					}
+				}
+				if(animal.Equals("montanya"))
+				{
+					if(codigo.Equals("while(peldaño==finalMontaña){peldaño++;}"))
+					{
+						textEnabled = false;
+						Application.LoadLevel("selectlevel");
+					}
+				}
+				if(animal.Equals("dinamita"))
+				{
+					if(codigo.Equals("if(prepararDinamita&&encenderDinamita){destruirRoca();}"))
+					{
+						textEnabled = false;
+						dinamiteTerminal.SetActive(false);
+						GameObject stone = GameObject.Find("stone");
+						stone.SetActive(false);
 					}
 				}
 			}
