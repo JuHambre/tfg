@@ -13,6 +13,7 @@ public class characterMovement : MonoBehaviour {
 	public GameObject sharkTerminal;
 	public GameObject warriorTerminal;
 	public GameObject mountainTerminal;
+	public GameObject stairsTerminal;
 
 	// Use this for initialization
 	void Start () {
@@ -70,6 +71,10 @@ public class characterMovement : MonoBehaviour {
 			{
 				mountainTerminal.SetActive(true);
 			}
+			if(animal.Equals("escaleras"))
+			{
+				stairsTerminal.SetActive(true);
+			}
 			if (GUI.Button (new Rect ((Screen.width * 0.05f), (Screen.height * 0.9f), 400, 50), "Comprobar"))
 			{
 				// Hacemos split de espacios tabulaciones y saltos de linea ya que en la programacion no influyen
@@ -104,6 +109,14 @@ public class characterMovement : MonoBehaviour {
 				if(animal.Equals("montanya"))
 				{
 					if(codigo.Equals("while(peldaño==finalMontaña){peldaño++;}"))
+					{
+						textEnabled = false;
+						Application.LoadLevel("selectlevel");
+					}
+				}
+				if(animal.Equals("escaleras"))
+				{
+					if(codigo.Equals("for(escalon=0;escalon==finalEscaleras;escalon++){cout<<escalon;}"))
 					{
 						textEnabled = false;
 						Application.LoadLevel("selectlevel");
