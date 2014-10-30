@@ -15,6 +15,8 @@ public class characterMovement : MonoBehaviour {
 	public GameObject mountainTerminal;
 	public GameObject stairsTerminal;
 	public GameObject monsterTerminal;
+	public GameObject vegetablesTerminal;
+	public GameObject duckTerminal;
 
 	// Use this for initialization
 	void Start () {
@@ -67,6 +69,14 @@ public class characterMovement : MonoBehaviour {
 			if(animal.Equals("monstruo"))
 			{
 				monsterTerminal.SetActive(true);
+			}
+			if(animal.Equals("verduras"))
+			{
+				vegetablesTerminal.SetActive(true);
+			}
+			if(animal.Equals("pato"))
+			{
+				duckTerminal.SetActive(true);
 			}
 			if(animal.Equals("tiburon"))
 			{
@@ -155,6 +165,28 @@ public class characterMovement : MonoBehaviour {
 						monsterTerminal.SetActive(false);
 						GameObject monster = GameObject.Find("monster");
 						monster.SetActive(false);
+					}
+				}
+				if(animal.Equals("verduras"))
+				{
+					if(codigo.Equals("if(gustarVerduras){comer++;}else{comer--;}") ||
+					   codigo.Equals("if(gustarVerduras==1){comer++;}else{comer--;}"))
+					{
+						textEnabled = false;
+						vegetablesTerminal.SetActive(false);
+						GameObject vegetables = GameObject.Find("vegetables");
+						vegetables.SetActive(false);
+					}
+				}
+				if(animal.Equals("pato"))
+				{
+					if(codigo.Equals("for(fila=0;fila==ultimaFila;fila++){" +
+						"for(columna=0;columna==ultimaColumna;columna++){pato--;}}"))
+					{
+						textEnabled = false;
+						duckTerminal.SetActive(false);
+						GameObject duck = GameObject.Find("duck");
+						duck.SetActive(false);
 					}
 				}
 			}
