@@ -14,6 +14,7 @@ public class characterMovement : MonoBehaviour {
 	public GameObject warriorTerminal;
 	public GameObject mountainTerminal;
 	public GameObject stairsTerminal;
+	public GameObject monsterTerminal;
 
 	// Use this for initialization
 	void Start () {
@@ -34,6 +35,7 @@ public class characterMovement : MonoBehaviour {
 	{
 		textEnabled = true;
 		this.animal = animal;
+		texto = "";
 	}
 
 	void OnGUI()
@@ -58,6 +60,10 @@ public class characterMovement : MonoBehaviour {
 			if(animal.Equals("dinamita"))
 			{
 				dinamiteTerminal.SetActive(true);
+			}
+			if(animal.Equals("monstruo"))
+			{
+				monsterTerminal.SetActive(true);
 			}
 			if(animal.Equals("tiburon"))
 			{
@@ -124,12 +130,28 @@ public class characterMovement : MonoBehaviour {
 				}
 				if(animal.Equals("dinamita"))
 				{
-					if(codigo.Equals("if(prepararDinamita&&encenderDinamita){destruirRoca();}"))
+					if(codigo.Equals("if(prepararDinamita&&encenderDinamita){roca--;}") ||
+					   codigo.Equals("if(prepararDinamita==1&&encenderDinamita){roca--;}") ||
+					   codigo.Equals("if(prepararDinamita&&encenderDinamita==1){roca--;}") ||
+					   codigo.Equals("if(prepararDinamita==1&&encenderDinamita==1){roca--;}"))
 					{
 						textEnabled = false;
 						dinamiteTerminal.SetActive(false);
 						GameObject stone = GameObject.Find("stone");
 						stone.SetActive(false);
+					}
+				}
+				if(animal.Equals("monstruo"))
+				{
+					if(codigo.Equals("if(escaparMonstruo||eliminarMonstruo){monstruo--;}") ||
+					   codigo.Equals("if(escaparMonstruo==1||eliminarMonstruo){monstruo--;}") ||
+					   codigo.Equals("if(escaparMonstruo||eliminarMonstruo==1){monstruo--;}") ||
+					   codigo.Equals("if(escaparMonstruo==1||eliminarMonstruo==1){monstruo--;}"))
+					{
+						textEnabled = false;
+						monsterTerminal.SetActive(false);
+						GameObject monster = GameObject.Find("monster");
+						monster.SetActive(false);
 					}
 				}
 			}
