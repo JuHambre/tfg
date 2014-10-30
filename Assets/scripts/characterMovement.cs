@@ -45,10 +45,13 @@ public class characterMovement : MonoBehaviour {
 			// Capturar las tabulaciones porque no las pilla el textarea
 			if( Event.current.Equals( Event.KeyboardEvent("tab") ) )
 			{
-				texto += "\t";
+				//texto += "\t";
 				TextEditor editor = (TextEditor)GUIUtility.GetStateObject(typeof(TextEditor), GUIUtility.keyboardControl);
-				editor.selectPos = texto.Length + 1;
-				editor.pos = texto.Length + 1;
+				String comienzoCadena = texto.Substring(0, editor.selectPos);
+				String finalCadena = texto.Substring(editor.selectPos, texto.Length-editor.selectPos);
+				texto = comienzoCadena + "\t" + finalCadena;
+				editor.selectPos++;
+				editor.pos++;
 				Event.current.Use();
 			}
 
