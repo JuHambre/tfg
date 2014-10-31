@@ -20,22 +20,22 @@ public class selectLevel : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		if (GUI.Button (new Rect (Screen.width * 0.1f, Screen.height * 0.2f, coutTexture.width*0.5f, coutTexture.height*0.5f), coutTexture)) {
+		if (GUI.Button (new Rect (Screen.width * 0.05f, Screen.height * 0.2f, coutTexture.width*0.4f, coutTexture.height*0.4f), coutTexture)) {
 			Application.LoadLevel("cout");
 		}
-		else if (GUI.Button (new Rect (Screen.width * 0.4f, Screen.height * 0.2f, coutTexture.width*0.5f, coutTexture.height*0.5f), contadorTexture)) {
+		else if (GUI.Button (new Rect (Screen.width * 0.375f, Screen.height * 0.2f, coutTexture.width*0.4f, coutTexture.height*0.4f), contadorTexture)) {
 			Application.LoadLevel("contador");
 		}
-		else if (GUI.Button (new Rect (Screen.width * 0.7f, Screen.height * 0.2f, coutTexture.width*0.5f, coutTexture.height*0.5f), ifTexture)) {
+		else if (GUI.Button (new Rect (Screen.width * 0.7f, Screen.height * 0.2f, coutTexture.width*0.4f, coutTexture.height*0.4f), ifTexture)) {
 			Application.LoadLevel("if");
 		}
-		else if (GUI.Button (new Rect (Screen.width * 0.1f, Screen.height * 0.7f, coutTexture.width*0.5f, coutTexture.height*0.5f), whileTexture)) {
+		else if (GUI.Button (new Rect (Screen.width * 0.05f, Screen.height * 0.7f, coutTexture.width*0.4f, coutTexture.height*0.4f), whileTexture)) {
 			Application.LoadLevel("while");
 		}
-		else if (GUI.Button (new Rect (Screen.width * 0.4f, Screen.height * 0.7f, coutTexture.width*0.5f, coutTexture.height*0.5f), forTexture)) {
+		else if (GUI.Button (new Rect (Screen.width * 0.375f, Screen.height * 0.7f, coutTexture.width*0.4f, coutTexture.height*0.4f), forTexture)) {
 			Application.LoadLevel("for");
 		}
-		else if (GUI.Button (new Rect (Screen.width * 0.7f, Screen.height * 0.7f, coutTexture.width*0.5f, coutTexture.height*0.5f), finishTexture)) {
+		else if (GUI.Button (new Rect (Screen.width * 0.7f, Screen.height * 0.7f, coutTexture.width*0.4f, coutTexture.height*0.4f), finishTexture)) {
 			Application.LoadLevel("finishlevel");
 		}
 	}
