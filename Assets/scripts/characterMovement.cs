@@ -34,6 +34,19 @@ public class characterMovement : MonoBehaviour {
 		characterAnimator.SetFloat ("Velocidad", rigidbody2D.velocity.x);
 	}
 
+	public void cargarNivel(string nivel)
+	{
+		GameObject correct = GameObject.Find("correct");
+		correct.renderer.enabled = true;
+		StartCoroutine (cargarNivelPausa (nivel));
+	}
+
+	public IEnumerator cargarNivelPausa(string nivel)
+	{
+		yield return new WaitForSeconds (2);
+		Application.LoadLevel (nivel);
+	}
+
 	public void activarTexto(string animal)
 	{
 		textEnabled = true;
@@ -111,7 +124,7 @@ public class characterMovement : MonoBehaviour {
 					if(codigo.Equals("cout<<\"Hola\";"))
 					{
 						textEnabled = false;
-						Application.LoadLevel("selectlevel");
+						cargarNivel("selectlevel");
 					}
 				}
 				if(animal.Equals("tiburon"))
@@ -119,7 +132,7 @@ public class characterMovement : MonoBehaviour {
 					if(codigo.Equals("tiburon--;"))
 					{
 						textEnabled = false;
-						Application.LoadLevel("selectlevel");
+						cargarNivel("selectlevel");
 					}
 				}
 				if(animal.Equals("guerrero"))
@@ -127,7 +140,7 @@ public class characterMovement : MonoBehaviour {
 					if(codigo.Equals("if(verOrco){cout<<\"¡FUEGO!\";}") || codigo.Equals("if(verOrco==1){cout<<\"¡FUEGO!\";}"))
 					{
 						textEnabled = false;
-						Application.LoadLevel("selectlevel");
+						cargarNivel("selectlevel");
 					}
 				}
 				if(animal.Equals("montanya"))
@@ -135,7 +148,7 @@ public class characterMovement : MonoBehaviour {
 					if(codigo.Equals("while(peldaño==finalMontaña){peldaño++;}"))
 					{
 						textEnabled = false;
-						Application.LoadLevel("selectlevel");
+						cargarNivel("selectlevel");
 					}
 				}
 				if(animal.Equals("escaleras"))
@@ -143,7 +156,7 @@ public class characterMovement : MonoBehaviour {
 					if(codigo.Equals("for(escalon=0;escalon==finalEscaleras;escalon++){cout<<escalon;}"))
 					{
 						textEnabled = false;
-						Application.LoadLevel("selectlevel");
+						cargarNivel("selectlevel");
 					}
 				}
 				if(animal.Equals("dinamita"))
@@ -200,7 +213,7 @@ public class characterMovement : MonoBehaviour {
 					   codigo.Equals("for(arbol=0;arbol==ultimoArbol;arbol++){if(verEnemigo==1){huir++;}}"))
 					{
 						textEnabled = false;
-						Application.LoadLevel("selectlevel");
+						cargarNivel("selectlevel");
 					}
 				}
 			}
