@@ -17,6 +17,7 @@ public class characterMovement : MonoBehaviour {
 	public GameObject monsterTerminal;
 	public GameObject vegetablesTerminal;
 	public GameObject duckTerminal;
+	public GameObject forestTerminal;
 
 	// Use this for initialization
 	void Start () {
@@ -77,6 +78,10 @@ public class characterMovement : MonoBehaviour {
 			if(animal.Equals("pato"))
 			{
 				duckTerminal.SetActive(true);
+			}
+			if(animal.Equals("bosque"))
+			{
+				forestTerminal.SetActive(true);
 			}
 			if(animal.Equals("tiburon"))
 			{
@@ -187,6 +192,15 @@ public class characterMovement : MonoBehaviour {
 						duckTerminal.SetActive(false);
 						GameObject duck = GameObject.Find("duck");
 						duck.SetActive(false);
+					}
+				}
+				if(animal.Equals("bosque"))
+				{
+					if(codigo.Equals("for(arbol=0;arbol==ultimoArbol;arbol++){if(verEnemigo){huir++;}}") ||
+					   codigo.Equals("for(arbol=0;arbol==ultimoArbol;arbol++){if(verEnemigo==1){huir++;}}"))
+					{
+						textEnabled = false;
+						Application.LoadLevel("selectlevel");
 					}
 				}
 			}
