@@ -6,8 +6,10 @@ public class characterMovement : MonoBehaviour {
 	public Animator characterAnimator;
 	public float maxSpeed = 10f;
 	public bool textEnabled = false;
+	public bool mensajeError = false;
 	public string texto = "";
 	public string animal = "";
+	public string resultado = "";
 	public GameObject turtleTerminal;
 	public GameObject dinamiteTerminal;
 	public GameObject sharkTerminal;
@@ -18,6 +20,7 @@ public class characterMovement : MonoBehaviour {
 	public GameObject vegetablesTerminal;
 	public GameObject duckTerminal;
 	public GameObject forestTerminal;
+	public GUIStyle styleError;
 
 	// Use this for initialization
 	void Start () {
@@ -54,6 +57,98 @@ public class characterMovement : MonoBehaviour {
 		texto = "";
 	}
 
+	public string conditionCout(string code)
+	{
+		string result = "";
+
+		if(!(code.Contains("cout<<")))
+		{
+			result = "Parece que no has escrito correctamente o no has puesto la palabra cout, modifica tu codigo e intentalo de nuevo";
+		}
+		else if(!(code.Contains("cout<<\"")))
+		{
+			result = "Parece que has olvidado las comillas despues del cout, modifica tu codigo e intentalo de nuevo";
+		}
+		else if(!(code.Contains("\";")))
+		{
+			result = "Parece que has olvidado las comillas del final o el punto y coma, modifica tu codigo e intentalo de nuevo";
+		}
+
+		return result;
+	}
+
+	public string conditionIf(string code)
+	{
+		string result = "";
+
+		if(!(code.Contains("if")))
+		{
+			result = "Parece que no has escrito correctamente o no has puesto la palabra if, modifica tu codigo e intentalo de nuevo";
+		}
+		else if(!(code.Contains("if(")))
+		{
+			result = "Parece que has olvidado el parentesis despues del if, modifica tu codigo e intentalo de nuevo";
+		}
+		else if(!(code.Contains("){")))
+		{
+			result = "Parece que has olvidado el parentesis de cierre o la llave de apertura, modifica tu codigo e intentalo de nuevo";
+		}
+		else if(!(code.Contains("}")))
+		{
+			result = "Parece que has olvidado la llave de cierre, modifica tu codigo e intentalo de nuevo";
+		}
+
+		return result;
+	}
+
+	public string conditionFor(string code)
+	{
+		string result = "";
+
+		if(!(code.Contains("for")))
+		{
+			result = "Parece que no has escrito correctamente o no has puesto la palabra for, modifica tu codigo e intentalo de nuevo";
+		}
+		else if(!(code.Contains("for(")))
+		{
+			result = "Parece que has olvidado el parentesis despues del for, modifica tu codigo e intentalo de nuevo";
+		}
+		else if(!(code.Contains("){")))
+		{
+			result = "Parece que has olvidado el parentesis de cierre o la llave de apertura, modifica tu codigo e intentalo de nuevo";
+		}
+		else if(!(code.Contains("}")))
+		{
+			result = "Parece que has olvidado la llave de cierre, modifica tu codigo e intentalo de nuevo";
+		}
+
+		return result;
+	}
+
+	public string conditionWhile(string code)
+	{
+		string result = "";
+
+		if(!(code.Contains("while")))
+		{
+			result = "Parece que no has escrito correctamente o no has puesto la palabra while, modifica tu codigo e intentalo de nuevo";
+		}
+		else if(!(code.Contains("while(")))
+		{
+			result = "Parece que has olvidado el parentesis despues del while, modifica tu codigo e intentalo de nuevo";
+		}
+		else if(!(code.Contains("){")))
+		{
+			result = "Parece que has olvidado el parentesis de cierre o la llave de apertura, modifica tu codigo e intentalo de nuevo";
+		}
+		else if(!(code.Contains("}")))
+		{
+			result = "Parece que has olvidado la llave de cierre, modifica tu codigo e intentalo de nuevo";
+		}
+
+		return result;
+	}
+
 	void OnGUI()
 	{		
 		if(textEnabled)
@@ -61,7 +156,6 @@ public class characterMovement : MonoBehaviour {
 			// Capturar las tabulaciones porque no las pilla el textarea
 			if( Event.current.Equals( Event.KeyboardEvent("tab") ) )
 			{
-				//texto += "\t";
 				TextEditor editor = (TextEditor)GUIUtility.GetStateObject(typeof(TextEditor), GUIUtility.keyboardControl);
 				String comienzoCadena = texto.Substring(0, editor.selectPos);
 				String finalCadena = texto.Substring(editor.selectPos, texto.Length-editor.selectPos);
@@ -126,6 +220,16 @@ public class characterMovement : MonoBehaviour {
 						textEnabled = false;
 						cargarNivel("selectlevel");
 					}
+					else
+					{
+						resultado = "";
+						resultado = conditionCout(codigo);
+						if(resultado == "")
+						{
+							resultado = "Parece que la sintaxis de tu codigo no es correcta, modifica tu codigo e intentalo de nuevo";
+						}
+						mensajeError=true;
+					}
 				}
 				if(animal.Equals("tiburon"))
 				{
@@ -133,6 +237,11 @@ public class characterMovement : MonoBehaviour {
 					{
 						textEnabled = false;
 						cargarNivel("selectlevel");
+					}
+					else
+					{
+						resultado = "Parece que la sintaxis de tu codigo no es correcta, modifica tu codigo e intentalo de nuevo";
+						mensajeError=true;
 					}
 				}
 				if(animal.Equals("guerrero"))
@@ -142,6 +251,20 @@ public class characterMovement : MonoBehaviour {
 						textEnabled = false;
 						cargarNivel("selectlevel");
 					}
+					else
+					{
+						resultado = "";
+						resultado = conditionCout(codigo);
+						if(resultado == "")
+						{
+							resultado = conditionIf(codigo);
+							if(resultado == "")
+							{
+								resultado = "Parece que la sintaxis de tu codigo no es correcta, modifica tu codigo e intentalo de nuevo";
+							}
+						}
+						mensajeError=true;
+					}
 				}
 				if(animal.Equals("montanya"))
 				{
@@ -150,6 +273,16 @@ public class characterMovement : MonoBehaviour {
 						textEnabled = false;
 						cargarNivel("selectlevel");
 					}
+					else
+					{
+						resultado = "";
+						resultado = conditionWhile(codigo);
+						if(resultado == "")
+						{
+							resultado = "Parece que la sintaxis de tu codigo no es correcta, modifica tu codigo e intentalo de nuevo";
+						}
+						mensajeError=true;
+					}
 				}
 				if(animal.Equals("escaleras"))
 				{
@@ -157,6 +290,20 @@ public class characterMovement : MonoBehaviour {
 					{
 						textEnabled = false;
 						cargarNivel("selectlevel");
+					}
+					else
+					{
+						resultado = "";
+						resultado = conditionCout(codigo);
+						if(resultado == "")
+						{
+							resultado = conditionFor(codigo);
+							if(resultado == "")
+							{
+								resultado = "Parece que la sintaxis de tu codigo no es correcta, modifica tu codigo e intentalo de nuevo";
+							}
+						}
+						mensajeError=true;
 					}
 				}
 				if(animal.Equals("dinamita"))
@@ -171,6 +318,16 @@ public class characterMovement : MonoBehaviour {
 						GameObject stone = GameObject.Find("stone");
 						stone.SetActive(false);
 					}
+					else
+					{
+						resultado = "";
+						resultado = conditionIf(codigo);
+						if(resultado == "")
+						{
+							resultado = "Parece que la sintaxis de tu codigo no es correcta, modifica tu codigo e intentalo de nuevo";
+						}
+						mensajeError=true;
+					}
 				}
 				if(animal.Equals("monstruo"))
 				{
@@ -184,6 +341,16 @@ public class characterMovement : MonoBehaviour {
 						GameObject monster = GameObject.Find("monster");
 						monster.SetActive(false);
 					}
+					else
+					{
+						resultado = "";
+						resultado = conditionIf(codigo);
+						if(resultado == "")
+						{
+							resultado = "Parece que la sintaxis de tu codigo no es correcta, modifica tu codigo e intentalo de nuevo";
+						}
+						mensajeError=true;
+					}
 				}
 				if(animal.Equals("verduras"))
 				{
@@ -194,6 +361,16 @@ public class characterMovement : MonoBehaviour {
 						vegetablesTerminal.SetActive(false);
 						GameObject vegetables = GameObject.Find("vegetables");
 						vegetables.SetActive(false);
+					}
+					else
+					{
+						resultado = "";
+						resultado = conditionIf(codigo);
+						if(resultado == "")
+						{
+							resultado = "Parece que la sintaxis de tu codigo no es correcta, modifica tu codigo e intentalo de nuevo";
+						}
+						mensajeError=true;
 					}
 				}
 				if(animal.Equals("pato"))
@@ -206,6 +383,16 @@ public class characterMovement : MonoBehaviour {
 						GameObject duck = GameObject.Find("duck");
 						duck.SetActive(false);
 					}
+					else
+					{
+						resultado = "";
+						resultado = conditionFor(codigo);
+						if(resultado == "")
+						{
+							resultado = "Parece que la sintaxis de tu codigo no es correcta, modifica tu codigo e intentalo de nuevo";
+						}
+						mensajeError=true;
+					}
 				}
 				if(animal.Equals("bosque"))
 				{
@@ -215,7 +402,25 @@ public class characterMovement : MonoBehaviour {
 						textEnabled = false;
 						cargarNivel("selectlevel");
 					}
+					else
+					{
+						resultado = "";
+						resultado = conditionIf(codigo);
+						if(resultado == "")
+						{
+							resultado = conditionFor(codigo);
+							if(resultado == "")
+							{
+								resultado = "Parece que la sintaxis de tu codigo no es correcta, modifica tu codigo e intentalo de nuevo";
+							}
+						}
+						mensajeError=true;
+					}
 				}
+			}
+			if(mensajeError == true)
+			{
+				GUI.Label(new Rect(Screen.width * 0.6f, Screen.height * 0.55f, 100, 100), resultado, styleError);
 			}
 		}
 	}

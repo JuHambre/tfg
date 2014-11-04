@@ -87,10 +87,79 @@ MonoBehaviour:
   characterAnimator: {fileID: 9500000}
   maxSpeed: 10
   textEnabled: 0
+  mensajeError: 0
   texto: 
   animal: 
+  resultado: 
   turtleTerminal: {fileID: 0}
   dinamiteTerminal: {fileID: 0}
+  sharkTerminal: {fileID: 0}
+  warriorTerminal: {fileID: 0}
+  mountainTerminal: {fileID: 0}
+  stairsTerminal: {fileID: 0}
+  monsterTerminal: {fileID: 0}
+  vegetablesTerminal: {fileID: 0}
+  duckTerminal: {fileID: 0}
+  forestTerminal: {fileID: 0}
+  styleError:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 86e338b6ffebada4a9a243863a9ab44d, type: 3}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 1
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 300
+    m_FixedHeight: 200
+    m_StretchWidth: 0
+    m_StretchHeight: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
