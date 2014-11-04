@@ -71,7 +71,7 @@ public class characterMovement : MonoBehaviour {
 		}
 		else if(!(code.Contains("\";")))
 		{
-			result = "Parece que has olvidado las comillas del final o el punto y coma, modifica tu codigo e intentalo de nuevo";
+			result = "Parece que has olvidado las comillas del final del cout o el punto y coma, modifica tu codigo e intentalo de nuevo";
 		}
 
 		return result;
@@ -317,6 +317,8 @@ public class characterMovement : MonoBehaviour {
 						dinamiteTerminal.SetActive(false);
 						GameObject stone = GameObject.Find("stone");
 						stone.SetActive(false);
+						resultado = "";
+						mensajeError = false;
 					}
 					else
 					{
@@ -340,6 +342,8 @@ public class characterMovement : MonoBehaviour {
 						monsterTerminal.SetActive(false);
 						GameObject monster = GameObject.Find("monster");
 						monster.SetActive(false);
+						resultado = "";
+						mensajeError = false;
 					}
 					else
 					{
@@ -361,6 +365,8 @@ public class characterMovement : MonoBehaviour {
 						vegetablesTerminal.SetActive(false);
 						GameObject vegetables = GameObject.Find("vegetables");
 						vegetables.SetActive(false);
+						resultado = "";
+						mensajeError = false;
 					}
 					else
 					{
@@ -382,6 +388,8 @@ public class characterMovement : MonoBehaviour {
 						duckTerminal.SetActive(false);
 						GameObject duck = GameObject.Find("duck");
 						duck.SetActive(false);
+						resultado = "";
+						mensajeError = false;
 					}
 					else
 					{
@@ -400,6 +408,8 @@ public class characterMovement : MonoBehaviour {
 					   codigo.Equals("for(arbol=0;arbol==ultimoArbol;arbol++){if(verEnemigo==1){huir++;}}"))
 					{
 						textEnabled = false;
+						resultado = "";
+						mensajeError = false;
 						cargarNivel("selectlevel");
 					}
 					else
